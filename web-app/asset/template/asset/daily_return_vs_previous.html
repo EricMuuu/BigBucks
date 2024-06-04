@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Return vs. Previous Daily</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-3">
+    <h1>Enter Stock Symbol for Daily Return vs. Previous Daily Graph</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" name="stock_symbol" placeholder="Enter Stock Symbol" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate Graph</button>
+        <div>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+        </div>
+    </form>
+
+    {% if graph %}
+    <div class="mt-4">
+        <h2>Graph for {{ request.POST.stock_symbol }}</h2>
+        <img src="data:image/png;base64,{{ graph }}" alt="Daily Return vs. Previous Daily Graph" class="img-fluid">
+    </div>
+    {% endif %}
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

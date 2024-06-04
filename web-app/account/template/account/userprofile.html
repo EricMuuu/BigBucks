@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+
+<div class='row'>
+    <div class="col-12 px-5 py-5">   
+        <div class="card">
+            <div class="card-header">
+                {{ user.username }}'s Profile
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <strong>Username:</strong> {{ user.username }}<br>
+                    <strong>First name:</strong> {{ user.first_name }}<br>
+                    <strong>Last name:</strong> {{ user.last_name }}<br>
+                    <strong>Email:</strong> {{ user.email }}<br>
+                    <strong>Phone:</strong> {{ user_profile.phone }}
+                </p>
+                <a href="{% url 'edit_user_profile' %}" class="btn btn-primary">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

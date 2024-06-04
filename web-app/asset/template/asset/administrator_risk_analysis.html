@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mb-1 text-muted">
+                        <span>Dashboard</span>
+                        <a class="d-flex align-items-center text-muted" href="{% url 'dashboard' %}">
+                            <span data-feather="monitor"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">
+                                <span data-feather="home"></span>
+                                Home        <!-- User's Current Stock Shares -->
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">
+                                <span data-feather="bar-chart-2"></span>
+                                Index       <!-- Latest 5 Years SPY Index Data -->
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'buy' %}active{% endif %}" href="{% url 'buy' %}">
+                                <span data-feather="plus-square"></span>
+                                Buy       <!-- Buy Stocks -->
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'sell' %}active{% endif %}" href="{% url 'sell' %}">
+                                <span data-feather="minus-square"></span>
+                                Sell       <!-- Sell Stocks -->
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'portfolio_performance' %}active{% endif %}" href="{% url 'portfolio_performance' %}">
+                                <span data-feather="folder"></span>
+                                Portfolio       <!-- Portfolio Performance -->
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'historical_data_owned' %}active{% endif %}" href="{% url 'historical_data_owned' %}">
+                                <span data-feather="database"></span>
+                                Historical Data       <!-- Historical Data Owned -->
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Account</span>
+                        <a class="d-flex align-items-center text-muted" href="{% url 'dashboard' %}">
+                            <span data-feather="user"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'edit_user_profile' %}">
+                                <span data-feather="edit"></span>
+                                Edit Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'administrator_register' %}">
+                                <span data-feather="user-plus"></span>
+                                Register As Administrator
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Administrator</span>
+                        <a class="d-flex align-items-center text-muted" href="{% url 'dashboard' %}">
+                            <span data-feather="users"></span>
+                        </a>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'administrator_list_all_stocks' %}">
+                                <span data-feather="list"></span>
+                                List All Stocks
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'administrator_risk_analysis' %}">
+                                <span data-feather="activity"></span>
+                                Risk Analysis
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'administrator_market_orders_summary' %}">
+                                <span data-feather="clipboard"></span>
+                                Market Orders Summary
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Risk Analysis</h1>
+                </div>
+                <!-- Dynamic content will be inserted here by JavaScript -->
+            </main>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div>
+                <h3>All Portfolio Return: {{ All_portfolio_return }}</h3>
+                <h3>All Portfolio Volatility: {{ All_portfolio_volatility }}</h3>
+            </div>
+        </main>
+    </div>
+{% endblock %}

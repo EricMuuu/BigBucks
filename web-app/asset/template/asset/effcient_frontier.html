@@ -1,0 +1,33 @@
+<!-- efficient_frontier.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficient Frontier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-3">
+    <h1>Efficient Frontier</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <!-- Include input elements for portfolio weights or other required inputs -->
+        <button type="submit" class="btn btn-primary">Generate Efficient Frontier</button>
+        <div>
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+        </div>
+    </form>
+
+    {% if graph %}
+    <div class="mt-4">
+        <h2>Efficient Frontier Graph</h2>
+        <img src="data:image/png;base64,{{ graph }}" alt="Efficient Frontier Graph" class="img-fluid">
+    </div>
+    {% endif %}
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

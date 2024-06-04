@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- https://getbootstrap.com/docs/4.1/examples/dashboard/ -->
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+    <title>BigBucks - {{ title }}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'base-styles.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for the signup template -->
+    <link href="{% static 'extends-styles.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <span class="navbar-brand col-sm-3 col-md-2 mr-0 text-center">BigBucks</span>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <span class="nav-link">
+                    <a href="{% url 'dashboard' %}">
+                        {{ request.user.username }}
+                        <span data-feather="user"></span>
+                    </a>
+                    <a href="{% url 'logout' %}">
+                        Sign out
+                        <span data-feather="log-out"></span>
+                    </a>
+                </span>
+            </li>
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+        feather.replace()
+    </script>
+</body>
+
+</html>
